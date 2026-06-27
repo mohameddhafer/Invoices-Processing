@@ -1,0 +1,6 @@
+{
+  "Name": "InvoicesProcessing",
+  "ProjectType": "Process",
+  "Description": "New Document Understanding Process",
+  "MainFile": "Main-AiInvoiceProcessing.xaml"
+}

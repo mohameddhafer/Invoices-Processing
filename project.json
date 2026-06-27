@@ -1,0 +1,94 @@
+{
+  "name": "InvoicesProcessing",
+  "projectId": "a82d7b32-0e3a-4951-befc-72db24b39a01",
+  "description": "New Document Understanding Process",
+  "main": "Main-AiInvoiceProcessing.xaml",
+  "dependencies": {
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.31.1]",
+    "UiPath.Excel.Activities": "3.4.1",
+    "UiPath.GSuite.Activities": "3.8.0-preview",
+    "UiPath.IntelligentOCR.Activities": "[6.22.0]",
+    "UiPath.System.Activities": "25.12.2",
+    "UiPath.Testing.Activities": "[24.10.3]",
+    "UiPath.UIAutomation.Activities": "[24.10.7]",
+    "UiPath.WebAPI.Activities": "2.4.0"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "26.0.190.0",
+  "projectVersion": "1.0.8",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": true,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main-Attended.xaml",
+      "uniqueId": "163020f8-8cb7-461e-ab96-ea2df2b0994e",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Main-ActionCenter.xaml",
+      "uniqueId": "977a4199-6db7-475a-8e90-1b51e5959177",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Main-AiInvoiceProcessing.xaml",
+      "uniqueId": "ad33aab8-f556-42e2-af56-395c2f73beea",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "GetMailInfo.xaml",
+      "uniqueId": "af02846d-50b0-487c-8b43-899073ac222d",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Framework\\ReusableWorkflows\\BuildExtractedFieldsDict.xaml",
+      "uniqueId": "57d4bf79-1800-4037-b414-df68ee53939e",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Framework\\ReusableWorkflows\\AppendToExcelReport.xaml",
+      "uniqueId": "be12bc49-1b96-4c22-bfe9-c377c746723f",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

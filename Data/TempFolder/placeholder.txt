@@ -1,0 +1,16 @@
+This is here to make sure the folder gets published.
+
+{
+  "message": "Name;Billing Name;Shipping Address;Date;Invoice Number;Payment Terms;Shipping Charges;Net Amount;Total;Discount;Items;FullFilePath;ProcessedAt;EmailSubject",
+  "level": "Information",
+  "logType": "User",
+  "timeStamp": "23:52:27",
+  "fileName": "Main-AiInvoiceProcessing",
+  "jobId": "cf7c3c83-beb0-4c64-bf82-975a910e7688",
+  "robotName": "mohameddhafer.hadjamor.dev@gmail.com-attended",
+  "machineId": 5810664,
+  "userKey": "ec225af2-153a-4c2a-8477-6c9367e0f721",
+  "processVersion": "1.0.5",
+  "organizationUnitId": 7748293,
+  "businessOperationId": "1ecffe6a3c874ae5b526e830e61dbab2-b2cea62759824e049977f1cf2a50b4d7"
+}

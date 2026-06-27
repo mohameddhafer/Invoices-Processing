@@ -1,0 +1,707 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Framework\\ReusableWorkflows\\AppendToExcelReport.xaml",
+      "uniqueId": "be12bc49-1b96-4c22-bfe9-c377c746723f",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_ExtractedResultsDict": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "in_ExcelFilePath": {
+            "type": "string"
+          },
+          "in_SheetName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "filePath": "Framework\\ReusableWorkflows\\BuildExtractedFieldsDict.xaml",
+      "uniqueId": "57d4bf79-1800-4037-b414-df68ee53939e",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_ExtractionResults": {
+            "type": "object",
+            "properties": {
+              "DocumentId": {
+                "type": "string"
+              },
+              "ResultsVersion": {
+                "$ref": "#/$defs/integer"
+              },
+              "ResultsDocument": {
+                "type": "object",
+                "properties": {
+                  "Bounds": {
+                    "type": "object",
+                    "properties": {
+                      "StartPage": {
+                        "$ref": "#/$defs/integer"
+                      },
+                      "PageCount": {
+                        "$ref": "#/$defs/integer"
+                      },
+                      "TextStartIndex": {
+                        "$ref": "#/$defs/integer"
+                      },
+                      "TextLength": {
+                        "$ref": "#/$defs/integer"
+                      }
+                    }
+                  },
+                  "Language": {
+                    "type": "string"
+                  },
+                  "DocumentGroup": {
+                    "type": "string"
+                  },
+                  "DocumentCategory": {
+                    "type": "string"
+                  },
+                  "DocumentTypeId": {
+                    "type": "string"
+                  },
+                  "DocumentTypeName": {
+                    "type": "string"
+                  },
+                  "DocumentTypeDataVersion": {
+                    "$ref": "#/$defs/integer"
+                  },
+                  "DataVersion": {
+                    "$ref": "#/$defs/integer"
+                  },
+                  "DocumentTypeSource": {
+                    "enum": [
+                      "Automatic",
+                      "Manual",
+                      "ManuallyChanged",
+                      "Defaulted",
+                      "External"
+                    ]
+                  },
+                  "DocumentTypeField": {
+                    "$ref": "#/$defs/resultsValue"
+                  },
+                  "Fields": {
+                    "$ref": "#/$defs/arrayOfResultsDataPoint"
+                  },
+                  "Tables": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "FieldId": {
+                          "type": "string"
+                        },
+                        "FieldName": {
+                          "type": "string"
+                        },
+                        "IsMissing": {
+                          "$ref": "#/$defs/boolean"
+                        },
+                        "DataSource": {
+                          "enum": [
+                            "Automatic",
+                            "Manual",
+                            "ManuallyChanged",
+                            "Defaulted",
+                            "External"
+                          ]
+                        },
+                        "DataVersion": {
+                          "$ref": "#/$defs/integer"
+                        },
+                        "OperatorConfirmed": {
+                          "type": "boolean"
+                        },
+                        "Values": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "OperatorConfirmed": {
+                                "type": "boolean"
+                              },
+                              "Confidence": {
+                                "$ref": "#/$defs/number"
+                              },
+                              "OcrConfidence": {
+                                "$ref": "#/$defs/number"
+                              },
+                              "Cells": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "RowIndex": {
+                                      "$ref": "#/$defs/integer"
+                                    },
+                                    "ColumnIndex": {
+                                      "$ref": "#/$defs/integer"
+                                    },
+                                    "IsHeader": {
+                                      "type": "boolean"
+                                    },
+                                    "IsMissing": {
+                                      "$ref": "#/$defs/boolean"
+                                    },
+                                    "OperatorConfirmed": {
+                                      "type": "boolean"
+                                    },
+                                    "DataSource": {
+                                      "enum": [
+                                        "Automatic",
+                                        "Manual",
+                                        "ManuallyChanged",
+                                        "Defaulted",
+                                        "External"
+                                      ]
+                                    },
+                                    "DataVersion": {
+                                      "$ref": "#/$defs/integer"
+                                    },
+                                    "Values": {
+                                      "$ref": "#/$defs/arrayOfResultsValue"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColumnInfo": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "FieldId": {
+                                      "type": "string"
+                                    },
+                                    "FieldName": {
+                                      "type": "string"
+                                    },
+                                    "FieldType": {
+                                      "enum": [
+                                        "Text",
+                                        "Number",
+                                        "Date",
+                                        "Name",
+                                        "Address",
+                                        "Keyword",
+                                        "Set",
+                                        "Boolean",
+                                        "Table",
+                                        "Internal"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "NumberOfRows": {
+                                "$ref": "#/$defs/integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ExtractorPayloads": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string"
+                    },
+                    "Payload": {
+                      "type": "string"
+                    },
+                    "SavedPayloadId": {
+                      "type": "string"
+                    },
+                    "TaxonomySchemaMapping": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "BusinessRulesResults": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "FieldId": {
+                      "type": "string"
+                    },
+                    "FieldType": {
+                      "enum": [
+                        "Text",
+                        "Number",
+                        "Date",
+                        "Name",
+                        "Address",
+                        "Keyword",
+                        "Set",
+                        "Boolean",
+                        "Table",
+                        "Internal"
+                      ]
+                    },
+                    "Criticality": {
+                      "enum": [
+                        "Must",
+                        "Should"
+                      ]
+                    },
+                    "IsValid": {
+                      "type": "boolean"
+                    },
+                    "Results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Value": {
+                            "type": "object",
+                            "properties": {
+                              "Value": {
+                                "type": "string"
+                              },
+                              "DerivedValue": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "IsValid": {
+                            "type": "boolean"
+                          },
+                          "Rules": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "Rule": {
+                                  "$ref": "#/$defs/rule"
+                                },
+                                "IsValid": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "BrokenRules": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/rule"
+                      }
+                    },
+                    "RowIndex": {
+                      "type": "integer",
+                      "minimum": -2147483648,
+                      "maximum": 2147483647
+                    },
+                    "TableFieldId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "$defs": {
+              "integer": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647
+              },
+              "resultsValue": {
+                "type": "object",
+                "properties": {
+                  "Components": {
+                    "$ref": "#/$defs/arrayOfResultsDataPoint"
+                  },
+                  "Value": {
+                    "type": "string"
+                  },
+                  "UnformattedValue": {
+                    "type": "string"
+                  },
+                  "Reference": {
+                    "type": "object",
+                    "properties": {
+                      "TextStartIndex": {
+                        "$ref": "#/$defs/integer"
+                      },
+                      "TextLength": {
+                        "$ref": "#/$defs/integer"
+                      },
+                      "Tokens": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "TextStartIndex": {
+                              "$ref": "#/$defs/integer"
+                            },
+                            "TextLength": {
+                              "$ref": "#/$defs/integer"
+                            },
+                            "Page": {
+                              "$ref": "#/$defs/integer"
+                            },
+                            "PageWidth": {
+                              "$ref": "#/$defs/number"
+                            },
+                            "PageHeight": {
+                              "$ref": "#/$defs/number"
+                            },
+                            "Boxes": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Top": {
+                                    "$ref": "#/$defs/number1"
+                                  },
+                                  "Left": {
+                                    "$ref": "#/$defs/number1"
+                                  },
+                                  "Width": {
+                                    "$ref": "#/$defs/number1"
+                                  },
+                                  "Height": {
+                                    "$ref": "#/$defs/number1"
+                                  },
+                                  "Bottom": {
+                                    "$ref": "#/$defs/number2"
+                                  },
+                                  "VerticalCenter": {
+                                    "$ref": "#/$defs/number2"
+                                  },
+                                  "Right": {
+                                    "$ref": "#/$defs/number2"
+                                  },
+                                  "HorizontalCenter": {
+                                    "$ref": "#/$defs/number2"
+                                  },
+                                  "Area": {
+                                    "$ref": "#/$defs/number2"
+                                  },
+                                  "IsEmpty": {
+                                    "$ref": "#/$defs/boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "DerivedFields": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "FieldId": {
+                          "type": "string"
+                        },
+                        "Value": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "Confidence": {
+                    "$ref": "#/$defs/number"
+                  },
+                  "OperatorConfirmed": {
+                    "type": "boolean"
+                  },
+                  "OcrConfidence": {
+                    "$ref": "#/$defs/number"
+                  },
+                  "TextType": {
+                    "enum": [
+                      "Unknown",
+                      "Text",
+                      "Checkbox",
+                      "Handwriting",
+                      "Barcode",
+                      "QRcode",
+                      "Stamp",
+                      "Logo"
+                    ]
+                  }
+                }
+              },
+              "arrayOfResultsDataPoint": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "FieldId": {
+                      "type": "string"
+                    },
+                    "FieldName": {
+                      "type": "string"
+                    },
+                    "FieldType": {
+                      "enum": [
+                        "Text",
+                        "Number",
+                        "Date",
+                        "Name",
+                        "Address",
+                        "Keyword",
+                        "Set",
+                        "Boolean",
+                        "Table",
+                        "Internal"
+                      ]
+                    },
+                    "IsMissing": {
+                      "$ref": "#/$defs/boolean"
+                    },
+                    "DataSource": {
+                      "enum": [
+                        "Automatic",
+                        "Manual",
+                        "ManuallyChanged",
+                        "Defaulted",
+                        "External"
+                      ]
+                    },
+                    "Values": {
+                      "$ref": "#/$defs/arrayOfResultsValue"
+                    },
+                    "DataVersion": {
+                      "$ref": "#/$defs/integer"
+                    },
+                    "OperatorConfirmed": {
+                      "type": "boolean"
+                    },
+                    "ValidatorNotes": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "boolean": {
+                "type": "boolean",
+                "readOnly": true
+              },
+              "arrayOfResultsValue": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/resultsValue"
+                }
+              },
+              "number": {
+                "type": "number",
+                "minimum": -3.4028234663852886E+38,
+                "maximum": 3.4028234663852886E+38
+              },
+              "number1": {
+                "type": "number",
+                "minimum": -1.7976931348623157E+308,
+                "maximum": 1.7976931348623157E+308
+              },
+              "number2": {
+                "type": "number",
+                "minimum": -1.7976931348623157E+308,
+                "maximum": 1.7976931348623157E+308,
+                "readOnly": true
+              },
+              "rule": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Type": {
+                    "enum": [
+                      "Mandatory",
+                      "PossibleValues",
+                      "Regex",
+                      "StartsWith",
+                      "EndsWith",
+                      "FixedLength",
+                      "IsNumeric",
+                      "IsDate",
+                      "IsEmail",
+                      "Contains",
+                      "Expression",
+                      "TableExpression",
+                      "IsEmpty"
+                    ]
+                  },
+                  "LogicalOperator": {
+                    "enum": [
+                      "AND",
+                      "OR"
+                    ]
+                  },
+                  "ComparisonOperator": {
+                    "enum": [
+                      "Equals",
+                      "NotEquals",
+                      "Greater",
+                      "Less",
+                      "GreaterOrEqual",
+                      "LessOrEqual"
+                    ]
+                  },
+                  "Expression": {
+                    "type": "string"
+                  },
+                  "SetValues": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "in_TargetFile": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "out_ExtractedFields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "filePath": "GetMailInfo.xaml",
+      "uniqueId": "af02846d-50b0-487c-8b43-899073ac222d",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_MailID": {
+            "type": "string"
+          },
+          "in_FullPath": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "out_AttachmentPath": {
+            "type": "string"
+          },
+          "out_EmailSubject": {
+            "type": "string"
+          },
+          "out_SenderEmail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "filePath": "Main-ActionCenter.xaml",
+      "uniqueId": "977a4199-6db7-475a-8e90-1b51e5959177",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_TargetFile": {
+            "type": "string",
+            "description": "The file path of the target document that is going to be processed."
+          },
+          "in_UseQueue": {
+            "type": "boolean",
+            "description": "Variable that checks if the Document Understanding Process is using Orchestrator Queues or not.",
+            "x-default-expression": "True",
+            "default": true
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "out_ExtractionResults": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "filePath": "Main-AiInvoiceProcessing.xaml",
+      "uniqueId": "ad33aab8-f556-42e2-af56-395c2f73beea",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "UiPathEventObjectId": {
+            "type": "string"
+          },
+          "UiPathEventObjectType": {
+            "type": "string"
+          },
+          "UiPathEvent": {
+            "type": "string"
+          },
+          "UiPathEventConnector": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "filePath": "Main-Attended.xaml",
+      "uniqueId": "163020f8-8cb7-461e-ab96-ea2df2b0994e",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_TargetFile": {
+            "type": "string",
+            "description": "The file path of the target document that is going to be processed."
+          },
+          "in_UseQueue": {
+            "type": "boolean",
+            "description": "Variable that checks if the Document Understanding Process is using Orchestrator Queues or not.",
+            "x-default-expression": "True",
+            "default": true
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}

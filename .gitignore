@@ -1,0 +1,11 @@
+# UiPath local files
+.local/
+.project/
+.settings/
+.analysis/
+.tmh/
+
+# Sensitive configuration
+Data/Config.xlsx
+Data/ExampleDocuments/
+QuickStart/InitializeOrchestrator/Data/InitializeOrchestratorConfig.xlsx
